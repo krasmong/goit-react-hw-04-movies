@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
-import Section from './components/Section/Section';
-// import Header from './components/Header/Header';
+import Container from './components/Container/Container';
+import Header from './components/Header/Header';
+import Navigation from './components/Navigation/Navigation';
 // import Main from './components/Main/Main';
+
+import links from './db/nav.json';
+console.log(links);
 
 class App extends Component {
   render() {
     return (
-      <>
-        <Section title={'Кинопоиск'}>{/* <Header /> */}</Section>
+      <div>
+        <Container title={'Кинопоиск'}>
+          <Header>
+            <Navigation links={links} />
+          </Header>
+        </Container>
 
-        <Section title={'Trending today'}>{/* <Main /> */}</Section>
-      </>
+        <Container title={'Trending today'}>{/* <Main /> */}</Container>
+      </div>
     );
   }
 }
