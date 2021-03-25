@@ -1,5 +1,3 @@
-// https://github.com/AleksaHrevtsova/fe-25-react-lesson-1/blob/eventsAndState/src/components/Navigation/Navigation.js
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Navigation.module.css';
