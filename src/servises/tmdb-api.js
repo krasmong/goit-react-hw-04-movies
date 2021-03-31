@@ -1,17 +1,19 @@
 import axios from 'axios';
 
-const KEY = '91aea6be0a2d3e1853dbbebc31e6363d';
-const BASE_URL = `https://api.themoviedb.org/3`;
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+axios.defaults.params = { api_key: '91aea6be0a2d3e1853dbbebc31e6363d' };
 
-function getFetch() {
-  let url = `${BASE_URL}/trending/movie/week?api_key=${KEY}`;
-  let options = {
-    method: 'GET',
-    headers: {
-      Autorization: KEY,
-    },
-  };
-  console.log(axios);
+async function fetchMoviesCommon(url = '', config = {}) {
+  try {
+    const response = await axios(url, config);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function fetchMoviesTrending() {
+  return fetchMoviesCommon('trending/all/day');
 }
 
 // https://www.youtube.com/watch?v=7vTKss0tbRM
