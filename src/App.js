@@ -4,22 +4,12 @@ import Container from './components/Container/Container';
 import Header from './components/Header/Header';
 import Navigation from './components/Navigation/Navigation';
 // import Main from './components/Main/Main';
+import TrendingList from './components/TrendingList/TrendingList';
 
 import links from './db/nav.json';
 // console.log(links);
 
 import * as getFetch from './servises/tmdb-api';
-
-// const TrendingList = ({ movies }) => (
-//   <ul>
-//     {movies.map(({ id, title, release_date }) => (
-//       <li key={id}>
-//         <span>{title}</span>
-//         <span>{release_date}</span>
-//       </li>
-//     ))}
-//   </ul>
-// );
 
 class App extends Component {
   state = {
@@ -43,7 +33,12 @@ class App extends Component {
           </Header>
         </Container>
 
-        <Container title={'Trending today'}>{/* <Main /> */}</Container>
+        <Container title={'Trending today'}>
+          {/* <Main /> */}
+          <div>
+            <TrendingList movies={movies} />
+          </div>
+        </Container>
       </div>
     );
   }
