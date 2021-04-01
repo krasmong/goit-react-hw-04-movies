@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import * as getFetch from '../servises/tmdb-api';
 import TrendingList from '../components/TrendingList/TrendingList';
-import { render } from '@testing-library/react';
 
 class HomePage extends Component {
+  state = {
+    movies: [],
+  };
+
+  async componentDidMount() {
+    const response = await getFetch.fetchMoviesTrending();
+    this.setState({ movies: response.data.results });
+  }
+
   render() {
-    return <> </>;
+    const { movies } = this.state;
+    return (
+      <>
+        <TrendingList movies={movies} />
+      </>
+    );
   }
 }
 
