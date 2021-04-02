@@ -3,14 +3,21 @@
     "id": "1",
     "props": {
       "name": "Home",
-      "path": "/"
+      "link": "/"
     }
   },
   {
     "id": "2",
     "props": {
       "name": "Movies",
-      "path": "/movies"
+      "link": "/movies"
+    }
+  },
+  {
+    "id": "3",
+    "props": {
+      "name": "About",
+      "link": "/about"
     }
   }
 ]

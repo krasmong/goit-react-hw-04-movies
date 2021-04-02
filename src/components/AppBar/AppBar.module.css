@@ -1,9 +1,15 @@
+.logo {
+  width: 10%;
+  height: 10%;
+}
+
 .header > div {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
 }
+
 .header {
   background-color: rgb(231, 226, 226);
 }

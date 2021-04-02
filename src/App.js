@@ -1,13 +1,9 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import Container from './components/Container/Container';
 import AppBar from './components/AppBar/AppBar';
-import Navigation from './components/Navigation/Navigation';
-
-import HomePage from './pages/HomePage';
-
-import links from './db/nav.json';
-// console.log(links);
+import { HomePage, MoviesPage } from './pages';
 
 function App() {
   return (
@@ -17,7 +13,12 @@ function App() {
       </Container>
 
       <Container title={'Trending today'}>
-        <HomePage />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/movies" component={MoviesPage} />
+        </Switch>
+        {/* <HomePage />
+        <MoviesPage /> */}
       </Container>
     </div>
   );
