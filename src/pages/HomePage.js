@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import * as getFetch from '../servises/tmdb-api';
+
 import TrendingList from '../components/TrendingList/TrendingList';
+
+import { Container } from '../components/Container';
 
 class HomePage extends Component {
   state = {
@@ -15,9 +18,9 @@ class HomePage extends Component {
   render() {
     const { movies } = this.state;
     return (
-      <>
+      <Container title={'Trending today'}>
         <TrendingList movies={movies} />
-      </>
+      </Container>
     );
   }
 }

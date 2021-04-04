@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Container from './components/Container/Container';
-import AppBar from './components/AppBar/AppBar';
-import { HomePage, MoviesPage } from './pages';
+import { AppBar } from './components/AppBar';
+import { Container } from './components/Container';
+import { HomePage, MoviesPage, About } from './pages';
 
 function App() {
   return (
@@ -12,14 +12,11 @@ function App() {
         <AppBar />
       </Container>
 
-      <Container title={'Trending today'}>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/movies" component={MoviesPage} />
-        </Switch>
-        {/* <HomePage />
-        <MoviesPage /> */}
-      </Container>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/movies" component={MoviesPage} />
+        <Route exact path="/about" component={About} />
+      </Switch>
     </div>
   );
 }
