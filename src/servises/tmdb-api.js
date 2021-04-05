@@ -17,6 +17,3 @@ async function fetchMoviesCommon(url = '', config = {}) {
 export function fetchMoviesTrending() {
   return fetchMoviesCommon('trending/movie/week');
 }
-
-// https://www.youtube.com/watch?v=7vTKss0tbRM
-// 47:52

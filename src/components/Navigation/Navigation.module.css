@@ -5,6 +5,12 @@
   align-items: center;
   margin-bottom: 0;
 }
+
 .navList li a {
   padding: 20px;
+}
+
+.NavLink {
+  color: rgb(13, 116, 233);
+  text-transform: uppercase;
 }

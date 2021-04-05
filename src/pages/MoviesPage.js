@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 class MoviesPage extends Component {
   state = {};
+  componentDidMount() {}
+
   render() {
     return (
       <>

@@ -23,4 +23,4 @@ const TrendingList = function ({ movies, location }) {
   );
 };
 
-export default TrendingList;
+export default withRouter(TrendingList);

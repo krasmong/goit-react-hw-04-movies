@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink, withRouter } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
 import s from './Navigation.module.css';
-
-import { NavLink, withRouter } from 'react-router-dom';
 
 const Navigation = ({ links, match }) => {
   // console.log(match);
@@ -17,7 +16,9 @@ const Navigation = ({ links, match }) => {
           const { link, name } = el.props;
           return (
             <li key={uuid()}>
-              <NavLink to={`${match.url}${link}`}>{name}</NavLink>
+              <NavLink className={s.NavLink} to={`${match.url}${link}`}>
+                {name}
+              </NavLink>
             </li>
           );
         })}
