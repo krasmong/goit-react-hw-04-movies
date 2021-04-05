@@ -1,7 +1,10 @@
 import React from 'react';
-import { Navigation } from '../Navigation';
+
 import s from './AppBar.module.css';
+
 import links from '../../db/nav.json';
+
+import { Navigation } from '../Navigation';
 
 const AppBar = () => (
   <header className={s.header}>

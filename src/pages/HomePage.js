@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import * as getFetch from '../servises/tmdb-api';
 
-import TrendingList from '../components/TrendingList/TrendingList';
-
 import { Container } from '../components/Container';
+import { TrendingList } from '../components/TrendingList';
 
 class HomePage extends Component {
   state = {

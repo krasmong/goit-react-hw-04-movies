@@ -1,18 +1,23 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import s from './Navigation.module.css';
-import { v4 as genId } from 'uuid';
+import { v4 as uuid } from 'uuid';
 
-const Navigation = ({ links }) => {
+import s from './Navigation.module.css';
+
+import { NavLink, withRouter } from 'react-router-dom';
+
+const Navigation = ({ links, match }) => {
+  // console.log(match);
+  // console.log(match.url);
+
   return (
     <nav>
       <ul className={s.navList}>
         {links.map(el => {
           const { link, name } = el.props;
           return (
-            <li key={genId()}>
-              <NavLink to={link}>{name}</NavLink>
+            <li key={uuid()}>
+              <NavLink to={`${match.url}${link}`}>{name}</NavLink>
             </li>
           );
         })}
@@ -21,7 +26,7 @@ const Navigation = ({ links }) => {
   );
 };
 
-export default Navigation;
+export default withRouter(Navigation);
 
 Navigation.propTypes = {
   links: PropTypes.arrayOf(
