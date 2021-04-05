@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { fetchMovieOnSubmit } from '../servises/tmdb-api';
 
 class MoviesPage extends Component {
-  state = {};
+  state = {
+    movies: null,
+  };
   componentDidMount() {}
 
   render() {

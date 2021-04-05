@@ -17,3 +17,7 @@ async function fetchMoviesCommon(url = '', config = {}) {
 export function fetchMoviesTrending() {
   return fetchMoviesCommon('trending/movie/week');
 }
+
+export function fetchMovieOnSubmit(query) {
+  return fetchMoviesCommon(`search/movie?query=${query}`);
+}
