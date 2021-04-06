@@ -1,46 +1,59 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { BiSearchAlt } from 'react-icons/bi';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import s from './Form.module.css';
 
 class Form extends Component {
   state = {
-    value: '',
+    query: '',
+  };
+
+  handleChange = e => {
+    this.setState({
+      query: e.currentTarget.value.toLowerCase(),
+    });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const { value } = this.state;
-    if (value.trim() === '') {
-      toast.error('This field cannot be empty');
+
+    if (this.state.query.trim() === '') {
+      toast.warn('Заполните форму поиска');
       return;
     }
-    this.props.onSubmit(this.state.value);
-    this.setState({ value: '' });
-  };
 
-  handleChange = e => {
-    this.setState({ value: e.target.value });
+    this.props.onSubmit(this.state.query);
+    this.setState({ query: '' });
   };
 
   render() {
     return (
-      <form className={s.form} onSubmit={this.handleSubmit}>
-        <input
-          className={s.input}
-          onChange={this.handleChange}
-          value={this.state.value}
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Serch images and photos"
-        />
-        <button className={s.button} type="submit">
-          <span className={s.buttonLabel}></span>
-        </button>
-      </form>
+      <div className={s.Searchbar}>
+        <form className={s.form} onSubmit={this.handleSubmit}>
+          <button type="submit" className={s.formButton}>
+            <BiSearchAlt style={{ marginRight: 8 }} />
+          </button>
+
+          <input
+            className={s.formInput}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search movies"
+            value={this.state.query}
+            onChange={this.handleChange}
+          />
+        </form>
+      </div>
     );
   }
 }
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Form;

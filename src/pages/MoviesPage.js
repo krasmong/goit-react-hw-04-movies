@@ -14,6 +14,7 @@ class MoviesPage extends Component {
     if (search) {
       const parsed = queryString.parse(search);
       const response = getFetch.fetchMovieOnSubmit(parsed.query);
+      console.log(response);
       response.then(r => this.setState({ movies: r.data.results }));
     }
   }
