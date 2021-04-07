@@ -8,71 +8,67 @@ import { MoviesList } from '../components/MoviesList';
 
 class MoviesPage extends Component {
   state = {
-    serchQuery: '',
-    movies: [],
+    query: '',
+    movies: null,
     error: null,
   };
 
   componentDidMount() {
     const { search, pathname } = this.props.location;
-    if ((search, pathname)) {
-      this.setState({
-        serchQuery: queryString.parse(search).query,
-      });
+    if (search && pathname) {
+      const parsed = queryString.parse(search);
+      const response = getFetch.fetchMovieOnSubmit(parsed.query);
+      console.log(response);
+      response.then(r => this.setState({ movies: r.data.results }));
     }
+    console.log('query: ', this.state.query);
   }
 
-  async componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevState.serchQuery !== this.state.serchQuery) {
       this.fetchMovies();
     }
   }
 
-  changeQuery = query => {
-    console.log(query);
+  handleSearch = query => {
+    console.log('zapros: ', query);
+    console.log('this.state.query: ', this.state.query);
 
-    const { history, location } = this.props;
+    const { history, match } = this.props;
 
-    this.setState({
-      serchQuery: query,
-      movies: [],
-      error: null,
-    });
-
-    history.push({
-      ...location,
-      search: `query=${query}`,
-    });
+    history.push(`${match.url}?query=${query}`);
+    const response = getFetch.fetchMovieOnSubmit(query);
+    response.then(r => this.setState({ movies: r.data.results }));
   };
 
-  async fetchMovies() {
-    const { serchQuery, error } = this.state;
-    const options = { serchQuery, error };
+  // async fetchMovies() {
+  //   const { query, error } = this.state;
+  //   const options = { query, error };
 
-    if (!serchQuery) {
-      return;
-    }
-    const response = await getFetch
-      .fetchMovieOnSubmit(options)
-      .then(({ results }) => {
-        console.log(results);
+  //   if (!query) {
+  //     return;
+  //   }
+  //   const response = await getFetch
+  //     .fetchMovieOnSubmit(options)
+  //     .then(({ results }) => {
+  //       console.log(results);
 
-        if (results.length === 0) {
-          throw new Error('No matches were found! Try again!');
-        }
+  //       if (results.length === 0) {
+  //         throw new Error('No matches were found! Try again!');
+  //       }
 
-        this.setState({
-          movies: [...results],
-        });
-      })
-      .catch(error => this.setState({ error }));
-  }
+  //       this.setState({
+  //         movies: [...results],
+  //       });
+  //     })
+  //     .catch(error => this.setState({ error }));
+  // }
 
   render() {
     const { error } = this.state;
     return (
       <>
-        <Form onSubmit={this.changeQuery} />
+        <Form onSubmit={this.handleSearch} />
         <MoviesList movies={this.state.movies} />
         {error && <h3>{error.message}</h3>}
       </>

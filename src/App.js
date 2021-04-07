@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import { AppBar } from './components/AppBar';
 import { Container } from './components/Container';
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/about" component={About} /> */}
         </Switch>
       </Suspense>
+      <ToastContainer autoClose={3000} />
     </>
   );
 }

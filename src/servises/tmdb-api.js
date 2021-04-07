@@ -21,3 +21,10 @@ export function fetchMoviesTrending() {
 export function fetchMovieOnSubmit(query) {
   return fetchMoviesCommon(`search/movie?query=${query}`);
 }
+
+// const fetchSearchMovies = ({ searchQuery = '' }) => {
+//   return axios
+//     .get(`${baseURL}/search/movie?query=${searchQuery}&api_key=${apiKey}`)
+//     .then(({ data }) => data)
+//     .catch(error => error);
+// };
