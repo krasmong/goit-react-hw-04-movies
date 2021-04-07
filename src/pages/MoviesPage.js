@@ -25,7 +25,7 @@ class MoviesPage extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.serchQuery !== this.state.serchQuery) {
+    if (prevState.query !== this.state.query) {
       this.fetchMovies();
     }
   }
