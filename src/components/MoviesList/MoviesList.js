@@ -3,7 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 
 // import s from './TrendingList.module.css'
 
-const TrendingList = function ({ movies, location }) {
+const MoviesList = function ({ movies, location }) {
   return (
     <>
       {movies && (
@@ -23,4 +23,4 @@ const TrendingList = function ({ movies, location }) {
   );
 };
 
-export default withRouter(TrendingList);
+export default withRouter(MoviesList);

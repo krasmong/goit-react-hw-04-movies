@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { BiSearchAlt } from 'react-icons/bi';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import s from './Form.module.css';
 
 class Form extends Component {
@@ -52,8 +51,8 @@ class Form extends Component {
   }
 }
 
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// Form.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };
 
 export default Form;
