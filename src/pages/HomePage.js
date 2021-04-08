@@ -16,6 +16,7 @@ class HomePage extends Component {
 
   render() {
     const { movies } = this.state;
+
     return (
       <Container title={'Trending today'}>
         <MoviesList movies={movies} />

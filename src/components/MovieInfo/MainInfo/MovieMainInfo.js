@@ -1,14 +1,14 @@
 import React from 'react';
 import pathLink from '../../../path';
-import s from './MovieMainInfo.css';
+import s from './MovieMainInfo.module.css';
 
 const MovieMainInfo = ({ movie, defaultImg }) => {
   const {
     title,
     poster_path,
     vote_average,
-    owerview,
-    ganres,
+    overview,
+    genres,
     release_date,
   } = movie;
 
@@ -25,17 +25,19 @@ const MovieMainInfo = ({ movie, defaultImg }) => {
           <img className="poster" src={imgUrl} alt={title} width={185} />
         </div>
 
-        <div className={s.MovieDesc}>
+        <div className={s.movieDesc}>
           <h2 className="title">
             {title}({releaseYear})
           </h2>
           <p className={s.text}>User score: {userScore} %</p>
-          <h3>Owerwiew</h3>
-          {owerwiew ? <p>{owerwiew}</p> : <p>No data</p>}
+          <h3>Overview</h3>
+          {overview ? <p>{overview}</p> : <p>No data</p>}
 
           <h3>Genres</h3>
-          {genres && genres.lenght > 0 ? (
-            <p>{genres.map(ganre.name).join('')}</p>
+          {genres && genres.length > 0 ? (
+            <p className={s.genres}>
+              {genres.map(genre => genre.name).join(', ')}
+            </p>
           ) : (
             <p>No data</p>
           )}

@@ -20,11 +20,11 @@ const routes = [
     path: '/about',
     component: lazy(() => import('./pages/About')),
   },
-  // {
-  //   key: uuid(),
-  //   exact: true,
-  //   path: '/movies/:movieId',
-  //   component: lazy(() => import('/movies/:movieId')),
-  // },
+  {
+    key: uuid(),
+    exact: true,
+    path: '/movies/:movieId',
+    component: lazy(() => import('./pages/MovieDetailsPage')),
+  },
 ];
 export default routes;
