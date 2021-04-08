@@ -3,6 +3,8 @@ import queryString from 'query-string';
 
 import * as getFetch from '../servises/tmdb-api';
 
+import { Container } from '../components/Container';
+
 import { Form } from '../components/Form';
 import { MoviesList } from '../components/MoviesList';
 
@@ -69,8 +71,10 @@ class MoviesPage extends Component {
     return (
       <>
         <Form onSubmit={this.handleSearch} />
-        <MoviesList movies={this.state.movies} />
-        {error && <h3>{error.message}</h3>}
+        <Container title={'MoviesList'}>
+          <MoviesList movies={this.state.movies} />
+          {error && <h3>{error.message}</h3>}
+        </Container>
       </>
     );
   }

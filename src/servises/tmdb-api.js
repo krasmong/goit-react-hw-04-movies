@@ -22,6 +22,10 @@ export function fetchMovieOnSubmit(query) {
   return fetchMoviesCommon(`search/movie?query=${query}`);
 }
 
+export function fetchMovieById(movieId) {
+  return fetchMoviesCommon(`movie/${movieId}`);
+}
+
 // const fetchSearchMovies = ({ searchQuery = '' }) => {
 //   return axios
 //     .get(`${baseURL}/search/movie?query=${searchQuery}&api_key=${apiKey}`)

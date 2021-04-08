@@ -1,0 +1,14 @@
+.MoviesList {
+  margin-top: 15px;
+  list-style-image: url('https://mdn.mozillademos.org/files/11981/starsolid.gif');
+}
+
+.item {
+  padding-left: 30px;
+
+  text-decoration: underline;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 5px;
+}
