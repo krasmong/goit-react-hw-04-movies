@@ -3,7 +3,7 @@ import * as getFetch from '../servises/tmdb-api';
 import defaultImg from '../../src/default.jpg';
 import routes from '../routes';
 
-import MovieMainInfo from '../components/MovieInfo/MainInfo/MovieMainInfo';
+import { MovieMainInfo, MovieOtherInfo } from '../components/MovieInfo';
 // import MovieOtherInfo from '../components/MovieInfo/OtherInfo/MovieOtherInfo';
 
 class MovieDetalisPage extends Component {
@@ -45,7 +45,7 @@ class MovieDetalisPage extends Component {
         {this.state.movie !== null && (
           <>
             <MovieMainInfo movie={this.state.movie} defaultImg={defaultImg} />
-            {/* <MovieOtherInfo /> */}
+            <MovieOtherInfo />
           </>
         )}
       </div>

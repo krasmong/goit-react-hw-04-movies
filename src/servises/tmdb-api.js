@@ -26,6 +26,10 @@ export function fetchMovieById(movieId) {
   return fetchMoviesCommon(`movie/${movieId}`);
 }
 
+export function fetchMovieCastInfo(movieId) {
+  return fetchMoviesCommon(`movie/${movieId}/credits`);
+}
+
 // const fetchSearchMovies = ({ searchQuery = '' }) => {
 //   return axios
 //     .get(`${baseURL}/search/movie?query=${searchQuery}&api_key=${apiKey}`)
