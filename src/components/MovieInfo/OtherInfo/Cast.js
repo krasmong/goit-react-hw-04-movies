@@ -15,15 +15,18 @@ class Cast extends Component {
     const { movieId } = this.props;
 
     const response = await getFetch.fetchMovieCastInfo(movieId);
-    this.setState({ info: response.data });
+    if (response) {
+      this.setState({ info: response.data });
+    }
+    console.log(response);
   }
 
   render() {
     const { info } = this.state;
 
-    if (info === null) {
-      return <></>;
-    }
+    // if (info === null) {
+    //   return <></>;
+    // }
 
     return (
       <>

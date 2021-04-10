@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link, Route, withRouter } from 'react-router-dom';
+import React, { Component, Suspense } from 'react';
+import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import Cast from './Cast';
 import Reviews from './Reviews';
 import s from './MovieOtherInfo.module.css';
@@ -32,16 +32,23 @@ class MovieOtherInfo extends Component {
             </Link>
           </li>
         </ul>
-        <Route
-          path={`${match.url}/cast`}
-          render={props => <Cast {...props} movieId={match.params.movieId} />}
-        />
-        <Route
-          path={`${match.url}/reviews`}
-          render={props => (
-            <Reviews {...props} movieId={match.params.movieId} />
-          )}
-        />
+
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <Switch>
+            <Route
+              path={`${match.url}/cast`}
+              render={props => (
+                <Cast {...props} movieId={match.params.movieId} />
+              )}
+            />
+            <Route
+              path={`${match.url}/reviews`}
+              render={props => (
+                <Reviews {...props} movieId={match.params.movieId} />
+              )}
+            />
+          </Switch>
+        </Suspense>
       </div>
     );
   }
