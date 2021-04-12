@@ -9,6 +9,8 @@ class MovieOtherInfo extends Component {
 
   render() {
     const { match, location } = this.props;
+    console.log(match.url);
+
     return (
       <div className={s.movieOtherInfo}>
         <h3 className={s.title}> Additional information</h3>
@@ -33,22 +35,20 @@ class MovieOtherInfo extends Component {
           </li>
         </ul>
 
-        <Suspense fallback={<h2>Loading...</h2>}>
-          <Switch>
-            <Route
-              path={`${match.url}/cast`}
-              render={props => (
-                <Cast {...props} movieId={match.params.movieId} />
-              )}
-            />
-            <Route
-              path={`${match.url}/reviews`}
-              render={props => (
-                <Reviews {...props} movieId={match.params.movieId} />
-              )}
-            />
-          </Switch>
-        </Suspense>
+        <Route
+          path={`${match.url}/cast`}
+          // component={Cast}
+          render={props => <Cast {...props} movieId={match.params.movieId} />}
+        />
+        <Route
+          path={`${match.url}/reviews`}
+          render={props => (
+            <Reviews {...props} movieId={match.params.movieId} />
+          )}
+        />
+        {/* <Suspense fallback={<h2>Loading...</h2>}>
+          <Switch></Switch>
+        </Suspense> */}
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as getFetch from '../../../servises/tmdb-api';
 import pathLink from '../../../path';
+import s from '../OtherInfo/Cast.module.css';
 import defaultImg from '../../../default.jpg';
 
 class Cast extends Component {
@@ -19,26 +20,28 @@ class Cast extends Component {
       this.setState({ info: response.data });
     }
     console.log(response);
+    console.log('cast');
   }
 
   render() {
     const { info } = this.state;
 
-    // if (info === null) {
-    //   return <></>;
-    // }
+    if (info === null) {
+      return <></>;
+    }
 
     return (
       <>
         {info.cast.length > 0 ? (
-          <ul>
+          <ul className={s.castList}>
             {info.cast.map(elem => (
-              <li key={elem.id}>
+              <li key={elem.id} className={s.item}>
                 {elem.profile_path ? (
                   <img
+                    className={s.itemImage}
                     src={`${pathLink.imageProfile}${elem.profile_path}`}
                     alt={elem.original_name}
-                    width="45"
+                    width="92"
                   />
                 ) : (
                   <img src={this.props.defaultImg} alt="Not found" width="45" />
